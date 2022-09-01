@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<meta lang="en">
+<html>
+<head><Title>Sorting Demo Tool</Title>
+			<link rel="stylesheet" href="styles/style.css">
+</head>
+<body onload="SortingAlgorithGraphTool.randomizeData()">
+	
+	
+	<!-- ************************ Introduction-->
+
+		<!-- ************************ Selectors-->
+
+		<!-- ************************ Tool-->
+
+		<!-- ************************ Footer-->
+
+	
+	
+<div id="sortDemo"></div>
+
+	size:<input id="size" type="number" value='10' min="5" max="100" style="width:50px" disabled>
+	
+<button onclick="SortingAlgorithGraphTool.randomizeData()">Randomize Data</button>
+	
+<button onclick="SortingAlgorithGraphTool.runSort()">SORT-></button>
+
+<select name="selector" id="sortSelector">
+  <option value="selection">Selection </option>
+  <option value="bubble">Bubble</option>
+  <option value="3">Quick</option>
+  <option value="4">Merge</option>
+</select>
+	
+	
+<input type="range" min="5" max="75" value="15" class="slider" id="myRange">
+	
+<input type="range" min="10" max="2000" value="100" class="slider" id="mySpeed">
+
+	
+<!--button onclick="generateSVGBar([1,2,0,5,6])">test graph</button-->
+	
+<button onclick="SortingAlgorithGraphTool.reset()">Stop</button>	
+		
+	<!-- must be square -->
+<svg id="bargraph" width="500" height="500" style="background-color: azure">
+  <rect width="300" height="100" style="fill:blue"/>
+</svg>
+	
+	
+		<br><br><br><br><br>
+<script src="javascript/sorting_tool.js"></script>
+	
+	
+	
+	
+</body>
+</html>

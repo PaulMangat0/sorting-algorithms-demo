@@ -17,7 +17,7 @@
 			<p>
 				Below is a simple tool which can be used to visualized some introductory sorting 
 				algorithms in computer science. Select your options on the left, click reset to prep
-				a new sort, press go to begin. This tool is created with html, css, and js.</p>			
+				a new sort, press start to begin. This tool is created with html, css, and js.</p>			
 		</div>
 	</section>
 	
@@ -32,7 +32,8 @@
 			<option value="selection">Selection </option>
 			<option value="bubble">Bubble</option>
 			<option value="insertion">Insertion</option>
-			<option value="4">Merge</option>
+			<option value="quick">Quick</option>
+			<option value="merge">Merge</option>
 		</select>
 			<!--Data Size-->
 		<label for="myRange">Data Size (small-large):</label>	
@@ -45,7 +46,7 @@
 
 		</div>
 		<div class=" stop_go flex">
-			<button class="btn" onclick="SortingAlgorithGraphTool.runSort()">Go</button>
+			<button class="btn" onclick="SortingAlgorithGraphTool.runSort()">Start</button>
 			<button class="btn" onclick="SortingAlgorithGraphTool.reset()">Stop</button>	
 			<button class="btn" onclick="SortingAlgorithGraphTool.randomizeData()">Reset</button>			
 		</div>

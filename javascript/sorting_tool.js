@@ -40,8 +40,9 @@ randomizeData : function() {
 this.reset();
 this.sortData[0] = [];
 
-//this.dataSize = (document.getElementById("size").value);
-	this.dataSize = (document.getElementById("myRange").value);
+
+	this.dataSize = document.querySelector("#myRange").value;
+	//this.dataSize = (document.getElementById("myRange").value);
 	
 		//fill with ordered nums
 		for(let i=0;i<this.dataSize;i++) {
@@ -62,7 +63,8 @@ this.sortData[0] = [];
 // Starts the sort animation based on selected sort id
 // and speed
 runSort : function() {
-	let choice = document.getElementById("sortSelector").value;
+	let choice = document.querySelector("#sortSelector").value;
+	//let choice = document.getElementById("sortSelector").value;
 	//console.log(typeof(choice));
 	switch(choice){
 			case "selection":
@@ -135,16 +137,22 @@ updateScreen : function(all2Data) {
 		let r = 0;
 		//console.log(all2Data);
 	
+//NEW
+//this.createGraph(all2Data[r]);
+//NEW
+
 		 this.intID = setInterval(() => { 
 				//document.getElementById("sortDemo").innerHTML=all2Data[r];
 			//temp
-			this.generateSVGBar(all2Data[r]);
+			//this.generateSVGBar(all2Data[r]);  PROPER
+			this.createGraph(all2Data[r]);
+			//this.generateSVGBar2(all2Data[r]);
 			//temp
 				r++;
 				if (r>=all2Data.length){
 					window.clearInterval(this.intID);
 				}
-			},document.getElementById("mySpeed").value);
+			},document.querySelector("#mySpeed").value);
 															//500);
 },
 
@@ -154,7 +162,7 @@ updateScreen : function(all2Data) {
 // bars are scaled to the size of the SVG window
 // colors are automatically generated
 generateSVGBar : function(graphData) {
-  let svgWidth=parseInt(document.getElementById("bargraph").getAttribute("width"));
+  let svgWidth=parseInt(document.querySelector("#bargraph").getAttribute("width"));
 	//console.log(svgWidth);
 	let x_step = svgWidth/graphData.length;
 	let width = (x_step/1.25);
@@ -170,7 +178,66 @@ generateSVGBar : function(graphData) {
  		rectHTML+="<text  x=\"" + (x_step*i+2) + "\" y =\"" +(svgWidth-5) + "\" fill=\"orange\" font-size=\""+svgWidth/(graphData.length*2)+"px\" >" +graphData[i]+ "</text>";
 		document.getElementById("bargraph").innerHTML = rectHTML;
 	}
-}
+},
+
+// ******************** generateSVGbar2
+// Attempt2
+// - without innerHTML 
+// - building tags first
+// - update translation values only
+
+createGraph :function(graphData1) {
+	//let graphData1 = this.sortData[0];
+	let svgWidth=parseInt(document.querySelector("#bargraph").getAttribute("width"));
+	let x_step = svgWidth/graphData1.length;
+	let width = x_step/1.25;
+	let y_scale = svgWidth/(graphData1.length+1);
+	//let rectHTML ="";
+
+	//let bar = [0,0];
+	//document.getElementById("bargraph").removeChild(0);
+	//var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+	//circle.setAttributeNS(null, "r", radius);
+	document.getElementById("bargraph").innerHTML="";
+	let documentHolder = document.createDocumentFragment();
+	let barSVG = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+	let textSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+	for(let i=0;i<graphData1.length;i++) {
+		//let i=10;
+		barSVG = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+		textSVG = document.createElementNS("http://www.w3.org/2000/svg", "text");
+		// bar.setAttributeNS(null,"x",(x_step*i));
+		// bar.setAttributeNS(null,"y",100);
+		// bar.setAttributeNS(null,"width",50);
+		// bar.setAttributeNS(null,"height",50);
+		barSVG.setAttributeNS(null,"x",x_step*i);
+		barSVG.setAttributeNS(null,"y",(svgWidth-graphData1[i]*y_scale)-2);
+		barSVG.setAttributeNS(null,"width",width);
+		barSVG.setAttributeNS(null,"height",(graphData1[i]*y_scale)+2);
+		barSVG.setAttributeNS(null,"fill","rgb(" + ((graphData1[i]*100)%255) +","+((graphData1[i]*200)%255)+","+((graphData1[i]*300)%255)+")");
+		barSVG.setAttributeNS(null,"style","stroke-width:1;stroke:black");
+
+		textSVG.setAttributeNS(null,"x",(x_step*i+2));
+		textSVG.setAttributeNS(null,"y",(svgWidth-5));
+		textSVG.setAttributeNS(null,"fill","orange");
+		textSVG.setAttributeNS(null,"font-size",svgWidth/(graphData1.length*2)+"px");
+		textSVG.textContent=graphData1[i];
+
+		documentHolder.appendChild(barSVG);
+		documentHolder.appendChild(textSVG);
+	}
+		
+	//	`<rect y="50" x="50" width="50" height="50">`; //new tag thingy
+
+
+	document.getElementById("bargraph").appendChild(documentHolder);
+	//console.log(document.getElementById("bargraph").childNodes.length);
+
+//	return documentHolder;
+	//document.getElementById("bargraph").appendChild(bar);
+	//document.getElementById("bargraph").innerHTML = bar;
+},
+
 
 }//end of object
 

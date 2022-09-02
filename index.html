@@ -1,54 +1,77 @@
 <!DOCTYPE HTML>
 <meta lang="en">
 <html>
+
 <head><Title>Sorting Demo Tool</Title>
+		<!--******************** Style Sheets *************************-->
 			<link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body onload="SortingAlgorithGraphTool.randomizeData()">
-	
-	
-	<!-- ************************ Introduction-->
-
-		<!-- ************************ Selectors-->
-
-		<!-- ************************ Tool-->
-
-		<!-- ************************ Footer-->
-
-	
-	
-<div id="sortDemo"></div>
-
-	size:<input id="size" type="number" value='10' min="5" max="100" style="width:50px" disabled>
-	
-<button onclick="SortingAlgorithGraphTool.randomizeData()">Randomize Data</button>
-	
-<button onclick="SortingAlgorithGraphTool.runSort()">SORT-></button>
 
 
-<select name="selector" id="sortSelector">
-  <option value="selection">Selection </option>
-  <option value="bubble">Bubble</option>
-  <option value="3">Quick</option>
-  <option value="4">Merge</option>
-</select>
+	<!--******************** Title/Intro *************************-->
+	<section class="container intro  space_below">
+		<div class="container text-center ">
+			<h1 class="space_below">Sorting Demonstration Tool</h1>
+			<p>
+				Below is a simple tool which can be used to visualized some introductory sorting 
+				algorithms in computer science. Select your options on the left, click reset to prep
+				a new sort, press go to begin. This tool is created with html, css, and js.</p>			
+		</div>
+	</section>
 	
-	
-<input type="range" min="5" max="75" value="15" class="slider" id="myRange">
-	
-<input type="range" min="10" max="2000" value="50" class="slider" id="mySpeed">
+	<!--******************** Selectors/Tool *************************-->
+
+<section class="container main_content grid2 ">
+	<div class="card controls ">
+		<div class=" grid2">
+			<!-- Selector -->
+		<label for="selector">Choose a sort:</label>	
+		<select name="selector" id="sortSelector">
+			<option value="selection">Selection </option>
+			<option value="bubble">Bubble</option>
+			<option value="insertion">Insertion</option>
+			<option value="4">Merge</option>
+		</select>
+			<!--Data Size-->
+		<label for="myRange">Data Size (small-large):</label>	
+		<input type="range" min="5" max="75" value="15" class="slider" id="myRange">
+
+
+			<!--Speed-->
+		<label for="mySpeed">Speed: (fast-slow)</label>
+		<input type="range" min="10" max="2000" value="50" class="slider" id="mySpeed">
+
+		</div>
+		<div class=" stop_go flex">
+			<button class="btn" onclick="SortingAlgorithGraphTool.runSort()">Go</button>
+			<button class="btn" onclick="SortingAlgorithGraphTool.reset()">Stop</button>	
+			<button class="btn" onclick="SortingAlgorithGraphTool.randomizeData()">Reset</button>			
+		</div>
+
+	</div>
+	<div class="card flex tool ">
+		<svg id="bargraph" width="500" height="500" style="background-color: azure">
+			<rect width="300" height="100" style="fill:blue"/>
+		</svg>
+	</div>
+</section>
+
 
 	
 	
-<button onclick="SortingAlgorithGraphTool.reset()">Stop</button>	
+	
 		
-	<!-- must be square -->
-<svg id="bargraph" width="500" height="500" style="background-color: azure">
-  <rect width="300" height="100" style="fill:blue"/>
-</svg>
-	
-	
-		<br><br><br><br><br>
+	<!--******************** Footer *************************-->
+	<footer class="container">
+		<div class="container foot flex ">
+			<p>&copy PaulMangat0 2022</p>				
+		</div>
+	</footer>
+
+<!--******************** Javascript *************************-->
+
 <script src="javascript/sorting_tool.js"></script>
 	
 	

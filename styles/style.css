@@ -1,6 +1,164 @@
+/********************* FONTS *******************/
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Roboto:wght@400;700&display=swap');
+
+
 /********************* BASE STYLES *******************/
 
 :root {
 	--primary-color: #047aed;
-	--secondary-color: #1c3fa8;
+	--secondary-color: #ffffff;
+	--background-color:#047aed;
+	--success-color:#5cb85c;
+	--error-color: #c23b37;	
+}
+
+/* RESET */
+* {   /* All element selector */
+	box-sizing: border-box;
+	padding:0;
+	margin:0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	color: white;
+	padding: 20px 20px;;
+	background-color: var(--background-color);
+}
+
+h1 {
+	font-weight: 700;
+	font-size: xx-large;
+}
+
+.intro p {
+	font-weight: 400;
+	font-size: large;
+}
+
+label {
+	font-size:medium;	
+}
+
+select{
+	font-size:medium;
+	max-width: 200px;
+}
+
+/********************* UTILS *******************/
+
+.container {
+	max-width:1200px; 
+	margin: 0 auto; 
+	overflow:auto; 
+	padding: 0px 40px;
+	background-color: var(--primary-color);
+}
+
+.flex{
+	display:flex;
+	
+	justify-content: center;
+	align-items: center;
+	/*height:100%;*/
+}
+
+.grid1{
+	display:grid;
+	grid-template-columns: 1fr;  
+	grid-gap: 5px; 
+	justify-content: center;
+	align-items: center;
+}
+.grid2{
+	display:grid;
+	grid-template-columns: 1fr 1fr;  
+	grid-gap: 20px; 
+	padding: 20px 20px;
+	justify-content: center;
+	align-items: center;
+}
+
+.card{
+	background-color: var(--secondary-color);
+	color: black;
+	border-radius: 5px;
+	box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+	padding: 20px;
+	height: 100%;
+	width: 100%;
+}
+
+.btn {
+  background-color: var(--primary-color); /* Green */
+  border: 1px black solid;
+  color: white; 
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.2s;
+  cursor: pointer;
+}
+
+.btn:hover{
+	background-color: var(--success-color);
+  color: white;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.space_below{
+	margin-bottom: 10px;
+}
+
+/********************* Styling *******************/
+.main_content {
+	overflow: hidden;
+	padding: 0px;
+}
+
+.intro {
+	color: white;
+}
+
+.intro p{
+	text-align: left;
+}
+
+.intro h1{
+	color: white;
+	text-shadow: 2px 0 rgb(0, 0, 0), -2px 0 rgb(0, 0, 0), 0 2px rgb(0, 0, 0), 0 -2px rgb(0, 0, 0),
+             1px 1px rgb(0, 0, 0), -1px -1px rgb(0, 0, 0), 1px -1px rgb(0, 0, 0), -1px 1px rgb(0, 0, 0);
+}
+
+.slider {
+	width: 400px;
+}
+
+
+svg{
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.foot {
+	margin-top: 10px;
+	justify-content: space-between;
+	font-size: small;
+	color:lightgray;
+}
+
+/********************* Media Queries *******************/
+
+@media(max-width: 1000px){
+	.grid2 {
+		grid-template-columns: 1fr;  
+
+	}
 }
